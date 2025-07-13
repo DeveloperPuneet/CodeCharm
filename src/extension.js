@@ -74,14 +74,14 @@ async function callGemini(prompt) {
     let text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
     // 🚫 Strip markdown code blocks
-    text = text?.replace(/[a-z]*\n?|/gi, '').trim();
+    text = text?.replace(/```[a-z]*\n?|```/gi, '').trim();
 
     return text || null; // Return the text or null
 }
 
 function deactivate() { } // Extension deactivation function
 
-module.exports = { 
-    activate, 
-    deactivate 
+module.exports = {
+    activate,
+    deactivate
 };
