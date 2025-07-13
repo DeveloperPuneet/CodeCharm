@@ -2,8 +2,9 @@
   "name": "CodeCharm",
   "displayName": "CodeCharm",
   "description": "AI-powered code comment generator for VS Code using Gemini",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "publisher": "DeveloperPuneet",
+  "icon": "images/Icon.png",
   "engines": {
     "vscode": "^1.50.0"
   },
