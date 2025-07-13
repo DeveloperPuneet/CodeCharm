@@ -1,4 +1,4 @@
-# CodeWhiz 🧠✨
+# CodeCharm 🧠✨
 
 **AI-powered VS Code extension that generates smart comments for your code using Gemini Pro.**
 

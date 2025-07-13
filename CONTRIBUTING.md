@@ -1,7 +1,7 @@
-# 🤝 Contributing to CodeWhiz
+# 🤝 Contributing to CodeCharm
 
 Welcome, fellow dev! 💻  
-Thanks for your interest in contributing to **CodeWhiz**, the AI-powered inline code-commenting extension for VS Code. Whether you're here to squash bugs, add features, or polish up documentation — you're awesome 🔥
+Thanks for your interest in contributing to **CodeCharm**, the AI-powered inline code-commenting extension for VS Code. Whether you're here to squash bugs, add features, or polish up documentation — you're awesome 🔥
 
 ---
 
@@ -9,8 +9,8 @@ Thanks for your interest in contributing to **CodeWhiz**, the AI-powered inline 
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/DeveloperPuneet/codewhiz.git
-   cd codewhiz
+   git clone https://github.com/DeveloperPuneet/CodeCharm.git
+   cd CodeCharm
    Install dependencies
    npm install
    Create .env file
@@ -28,7 +28,7 @@ Press ```Ctrl + Win + J``` to generate inline comments 🧠✨
 
 📦 Folder Structure
 ```
-codewhiz/
+CodeCharm/
 ├── src/                  # Extension logic
 ├── .vscode/              # Launch config
 ├── .env                  # API key (not committed)

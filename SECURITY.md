@@ -2,7 +2,7 @@
 
 ## 🛡️ Supported Versions
 
-Below is the list of CodeWhiz versions currently receiving security updates:
+Below is the list of CodeCharm versions currently receiving security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -14,7 +14,7 @@ Below is the list of CodeWhiz versions currently receiving security updates:
 
 ## 🐞 Reporting a Vulnerability
 
-If you discover a security vulnerability in CodeWhiz, please **do not open a public issue**.
+If you discover a security vulnerability in CodeCharm, please **do not open a public issue**.
 
 Instead, email the maintainer at **DeveloperPuneet@protonmail.com** (or your secure email) with the details.
 
@@ -25,4 +25,4 @@ If the vulnerability is confirmed:
 - You’ll be credited (if you want 😎)
 - The fix will be pushed in the next minor release
 
-Thanks for keeping CodeWhiz secure 💙
+Thanks for keeping CodeCharm secure 💙

@@ -1,9 +1,9 @@
 {
-  "name": "codewhiz",
-  "displayName": "CodeWhiz",
+  "name": "CodeCharm",
+  "displayName": "CodeCharm",
   "description": "AI-powered code comment generator for VS Code using Gemini",
   "version": "0.0.1",
-  "publisher": "codewhiz",
+  "publisher": "DeveloperPuneet",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -11,27 +11,27 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:codewhiz.commentFunction"
+    "onCommand:CodeCharm.commentFunction"
   ],
   "main": "./src/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "codewhiz.commentFunction",
-        "title": "🧠 CodeWhiz: Generate Comment (Ctrl+Win+J)"
+        "command": "CodeCharm.commentFunction",
+        "title": "🧠 CodeCharm: Generate Comment (Ctrl+Win+J)"
       }
     ],
     "keybindings": [
       {
-        "command": "codewhiz.commentFunction",
+        "command": "CodeCharm.commentFunction",
         "key": "ctrl+win+j",
         "when": "editorTextFocus"
       }
     ],
     "configuration": {
-      "title": "CodeWhiz Settings",
+      "title": "CodeCharm Settings",
       "properties": {
-        "codewhiz.apiKey": {
+        "CodeCharm.apiKey": {
           "type": "string",
           "default": "AIzaSyCmn7yKuV9XsIKNfgR07o7fdXyYdbQVuyU",
           "description": ""
@@ -41,5 +41,9 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DeveloperPuneet/CodeCharm.git"
   }
 }

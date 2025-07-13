@@ -2,7 +2,7 @@ const vscode = require('vscode'); // VS Code module needed 💻
 const fetch = require('node-fetch'); // For making requests 🌐
 
 async function activate(context) {
-    let disposable = vscode.commands.registerCommand('codewhiz.commentFunction', async function () { // Register the command ⚙️
+    let disposable = vscode.commands.registerCommand('CodeCharm.commentFunction', async function () { // Register the command ⚙️
         const editor = vscode.window.activeTextEditor; // Get active editor 📝
         if (!editor) return; // Return if no editor 🚪
 
@@ -26,7 +26,7 @@ async function activate(context) {
     });
 
     context.subscriptions.push(disposable); // Add to subscriptions ✅
-    vscode.window.showInformationMessage("🧠 CodeWhiz v1.1 loaded with retry + inline mode!"); // Show success message 🎉
+    vscode.window.showInformationMessage("🧠 CodeCharm v1.1 loaded with retry + inline mode!"); // Show success message 🎉
 }
 
 async function getCommentFromGemini(code) {
@@ -51,10 +51,10 @@ async function getCommentFromGemini(code) {
 
 async function callGemini(prompt) {
     // Get API key from settings 🔑
-    let api = vscode.workspace.getConfiguration().get("codewhiz.apiKey");
+    let api = vscode.workspace.getConfiguration().get("CodeCharm.apiKey");
     if (!api) {
         // Show missing API key error 🚫
-        vscode.window.showErrorMessage("❌ Gemini API key is missing! Add it in VS Code settings (codewhiz.apiKey)");
+        vscode.window.showErrorMessage("❌ Gemini API key is missing! Add it in VS Code settings (CodeCharm.apiKey)");
         return null;
     }
     // Fetch Gemini API response 🌐
