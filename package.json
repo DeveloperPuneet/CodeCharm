@@ -1,36 +1,45 @@
 {
-    "name": "codewhiz",
-    "displayName": "CodeWhiz",
-    "description": "AI-powered code comment generator for VS Code using Gemini",
-    "version": "0.0.1",
-    "publisher": "codewhiz",
-    "engines": {
-        "vscode": "^1.50.0"
-    },
-    "categories": [
-        "Other"
+  "name": "codewhiz",
+  "displayName": "CodeWhiz",
+  "description": "AI-powered code comment generator for VS Code using Gemini",
+  "version": "0.0.1",
+  "publisher": "codewhiz",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codewhiz.commentFunction"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codewhiz.commentFunction",
+        "title": "🧠 CodeWhiz: Generate Comment (Ctrl+Win+J)"
+      }
     ],
-    "activationEvents": [
-        "onCommand:codewhiz.commentFunction"
+    "keybindings": [
+      {
+        "command": "codewhiz.commentFunction",
+        "key": "ctrl+win+j",
+        "when": "editorTextFocus"
+      }
     ],
-    "main": "./src/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "codewhiz.commentFunction",
-                "title": "🧠 CodeWhiz: Generate Comment (Ctrl+Win+Q)"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "codewhiz.commentFunction",
-                "key": "ctrl+win+j",
-                "when": "editorTextFocus"
-            }
-        ]
-    },
-    "dependencies": {
-        "dotenv": "^17.2.0",
-        "node-fetch": "^2.6.1"
+    "configuration": {
+      "title": "CodeWhiz Settings",
+      "properties": {
+        "codewhiz.apiKey": {
+          "type": "string",
+          "default": "AIzaSyCmn7yKuV9XsIKNfgR07o7fdXyYdbQVuyU",
+          "description": ""
+        }
+      }
     }
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
 }
