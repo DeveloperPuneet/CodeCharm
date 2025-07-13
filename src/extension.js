@@ -68,7 +68,6 @@ async function callGemini(prompt) {
 
     // Parse the JSON response data 📦
     const data = await res.json();
-    console.log("Gemini raw response:", JSON.stringify(data, null, 2));
 
     // Extract the text from response ✍️
     let text = data.candidates?.[0]?.content?.parts?.[0]?.text;
