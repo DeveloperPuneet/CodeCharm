@@ -1,7 +1,7 @@
-func reverse(s string) string {
-    r := []rune(s) // Convert to rune slice
-    for i, j := 0, len(r)-1; i < j; i, j = i+1, j-1 {
-        r[i], r[j] = r[j], r[i] // Swap elements 🔄
-    }
-    return string(r) // Return reversed string
+func reverse(inputString string) string {
+	runes := []rune(inputString) // Convert string to runes
+	for start, end := 0, len(runes)-1; start < end; start, end = start+1, end-1 { // Iterate until middle 🧮
+		runes[start], runes[end] = runes[end], runes[start] // Swap characters 🔄
+	}
+	return string(runes) // Return reversed string 🥳
 }

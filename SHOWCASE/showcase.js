@@ -1,5 +1,6 @@
-function area(a, b){
-    console.log("Finding rectangle area", a, b); // Understand inputs 📐
-    console.log("Area is calculated", a * b) // Multiply to find area 🧮
-    return a * b; // Return calculated area 🎁
+function calculateRectangleArea(length, width) {
+    console.log("Finding rectangle area", length, width); // Log inputs 📐
+    const area = length * width; // Calculate the area 🧮
+    console.log("Area is calculated", area); // Log the result ✅
+    return area; // Return the area value
 }
