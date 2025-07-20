@@ -1,67 +1,104 @@
-# CodeCharm 🧠✨
+# 🧠 CodeCharm — AI-Powered Code Comment Generator for VS Code
 
-**CodeCharm** is an AI-powered inline comment and code readability extension for Visual Studio Code, powered by Google's Gemini models. It helps you:
+CodeCharm is your intelligent VS Code extension that generates **inline code comments** using Google Gemini models. It uses your selected code and enhances it with **emoji-rich, concise comments** or **refactors it for readability**.
 
-* ✍️ Add short inline comments with emojis to selected code
-* ♻️ Improve code readability with clean, structured refactors
-
----
-
-## 🚀 Features
-
-* ⚡ **Ctrl + Win + J** → Add short inline comments with emojis (strict, concise, meaningful)
-* 📘 **Ctrl + Win + G** → Refactor code for improved readability (clear variable names, structure)
-* 💾 Gemini API model fallback: automatically uses backup model if primary fails
-* 🧠 Dual mode: "comment" & "readability"
+> 🚀 Now updated with **multi-model fallback support** and **secure API key input**!
 
 ---
 
-## 📦 Installation
+## 🌟 Features
 
-1. Download `.vsix` package:
-
-   ```bash
-   vsce package
-   ```
-2. Install in VS Code:
-
-   ```bash
-   code --install-extension CodeCharm-x.x.x.vsix
-   ```
-
----
-
-## 🔐 API Usage & Model Fallback
-
-* Primary model: `gemini-2.0-flash-lite`
-* Fallback model: `gemini-2.0-flash`
-
-If the primary model is rate-limited or fails, CodeCharm will retry using the backup model seamlessly.
+- ✍️ Generate **inline code comments** with emojis — clean and fun.
+- ♻️ Refactor messy code to improve readability.
+- ⌨️ **Shortcut support**:
+  - `Ctrl + Win + J` → Add Inline Comments
+  - `Ctrl + Win + G` → Refactor Code
+- 🔁 **Model Fallback Support**: Uses the following Gemini models in this order:
+  1. `gemini-2.0-flash-lite`
+  2. `gemini-2.0-flash`
+  3. `gemini-2.5-flash-lite`
+  4. `gemini-2.5-pro`
+- 🔐 **Secure API Key Storage** in VS Code settings.
+- 🧠 Uses your **own API key**, no sharing required.
 
 ---
 
-## 🧪 Usage
+## 🔑 Setup — Add Your API Key
 
-1. Select any code block
-2. Press `Ctrl + Win + J` for inline comments ✍️
-3. Or press `Ctrl + Win + G` for readability suggestions 📘
+To use CodeCharm, you'll need your **own Google Gemini API key**:
 
----
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey).
+2. Copy your API key.
+3. Open VS Code.
+4. Press `Ctrl + Win + J` or `Ctrl + Win + G` for the first time.
+5. A secure input box will appear → paste your key there.
+6. It will be saved automatically in:  
+   **`CodeCharm.zetaFlux`** in your VS Code settings.
 
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss.
-
----
-
-## 📄 License
-
-Licensed under MIT.
+> 🔐 Your key stays local & secure — not shared or stored remotely.
 
 ---
 
-## 🌐 Publisher Info
+## 🚀 How to Use
 
-Made by [DeveloperPuneet](https://github.com/DeveloperPuneet) — I build extensions and websites with AI magic 🔮
+1. Select a block of code.
+2. Press:
+   - `Ctrl + Win + J` → for inline comments
+   - `Ctrl + Win + G` → to refactor code
+3. CodeCharm will generate and replace your selection with an improved version.
 
-Marketplace: [https://marketplace.visualstudio.com/items?itemName=DeveloperPuneet.CodeCharm](https://marketplace.visualstudio.com/items?itemName=DeveloperPuneet.CodeCharm)
+---
+
+## 🧪 Example Output
+
+### Before:
+```js
+function getUser(id) {
+  return db.query("SELECT * FROM users WHERE id = " + id);
+}
+```
+
+## After (Ctrl + Win + J):
+```js
+function getUser(id) {
+  return db.query("SELECT * FROM users WHERE id = " + id); // 🧑‍💻 Query user by ID
+}
+```
+
+## 📦 Extension Info
+
+- 📁 **Extension ID**: `CodeCharm`
+- 👨‍💻 **Publisher**: [`DeveloperPuneet`](https://github.com/DeveloperPuneet)
+- 🔗 **GitHub Repo**: [CodeCharm](https://github.com/DeveloperPuneet/CodeCharm)
+- 🧩 **VS Code Version**: `^1.50.0` and above
+- 🧠 **AI Models Used**:
+  - `gemini-2.0-flash-lite` (primary)
+  - `gemini-2.0-flash`
+  - `gemini-2.5-flash-lite`
+  - `gemini-2.5-pro`
+
+## 🛟 Troubleshooting
+
+- ❌ **Getting No Output or Errors?**
+  - Make sure your Gemini API key is valid.
+  - If it's missing or expired, you'll be prompted to input it when you try using the extension.
+  - To manually update or check your key:  
+    `Settings → Extensions → CodeCharm → zetaFlux`
+
+- ⚠️ **Network Errors?**
+  - Check your internet connection or if Google's Gemini API is reachable.
+  - Avoid hammering it with hundreds of requests/minute — Google don’t play 😬
+
+## 🧤 Contributions
+
+- 💬 Ideas, feature requests, and PRs are all welcome!
+- Fork it, star it ⭐, break it, rebuild it — just don’t write spaghetti 🍝
+- All feedback = good feedback, especially with emojis.
+
+## 📜 License
+
+**MIT** — Use it, hack it, improve it.  
+You break it, you own it. 💥
+
+> 💬 Built with brain, bugs & caffeine by [@DeveloperPuneet](https://github.com/DeveloperPuneet)  
+> *“If your code can’t explain itself, at least let it drop some emoji bars 🎯.”*

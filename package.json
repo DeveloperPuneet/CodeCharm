@@ -2,7 +2,7 @@
   "name": "CodeCharm",
   "displayName": "CodeCharm",
   "description": "AI-powered code comment generator for VS Code using Gemini",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "publisher": "DeveloperPuneet",
   "icon": "images/Icon.png",
   "engines": {
@@ -13,7 +13,8 @@
   ],
   "activationEvents": [
     "onCommand:CodeCharm.commentFunction",
-    "onCommand:CodeCharm.suggestReadableCode"
+    "onCommand:CodeCharm.suggestReadableCode",
+    "onCommand:CodeCharm.setApiKey"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -25,6 +26,10 @@
       {
         "command": "CodeCharm.suggestReadableCode",
         "title": "🛠️ CodeCharm: Improve Code Readability (Ctrl+Win+G)"
+      },
+      {
+        "command": "CodeCharm.setApiKey",
+        "title": "🔑 CodeCharm: Set Gemini API Key"
       }
     ],
     "keybindings": [
@@ -44,8 +49,8 @@
       "properties": {
         "CodeCharm.zetaFlux": {
           "type": "string",
-          "default": "AIzaSyCmn7yKuV9XsIKNfgR07o7fdXyYdbQVuyU",
-          "description": ""
+          "default": "",
+          "description": "🔐 Your Gemini API key used for generating AI comments and refactoring."
         }
       }
     }

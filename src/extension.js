@@ -1,119 +1,141 @@
-const vscode = require('vscode');
-const fetch = require('node-fetch');
+const vscode = require('vscode'); // Import VS Code module 💻
+const fetch = require('node-fetch'); // Import node-fetch library 🌐
+
+const primaryModel = "gemini-2.0-flash-lite"; // Primary model choice 🧠
+const fallbackModels = [ // Fallback model options 🔄
+    "gemini-2.0-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.5-pro"
+];
+
+// 🔐 Prompt user to enter API key
+async function getOrPromptAPIKey() {
+    let apiKey = vscode.workspace.getConfiguration().get("CodeCharm.zetaFlux"); // Get API key from config ⚙️
+    if (!apiKey) {
+        const userInput = await vscode.window.showInputBox({ // Show input box prompt ⌨️
+            prompt: "Enter your Gemini API Key", // User input prompt ❓
+            ignoreFocusOut: true, // Keep focus on box
+            placeHolder: "Paste your key here...", // Placeholder text 📝
+            password: true // Hide input characters 🙈
+        });
+
+        if (userInput) {
+            await vscode.workspace.getConfiguration().update("CodeCharm.zetaFlux", userInput, vscode.ConfigurationTarget.Global); // Save API key 💾
+            vscode.window.showInformationMessage("✅ API Key saved successfully!"); // Success message 🥳
+            apiKey = userInput;
+        } else {
+            vscode.window.showErrorMessage("❌ API Key is required."); // Error message 😠
+        }
+    }
+    return apiKey;
+}
 
 // 🧠 Activate Extension
 async function activate(context) {
-    // Comment Generation (Ctrl + Win + J)
     const commentCommand = vscode.commands.registerCommand('CodeCharm.commentFunction', async function () {
         const editor = vscode.window.activeTextEditor;
-        if (!editor) return;
+        if (!editor) return; // Return if no editor
 
         const selection = editor.selection;
         const selectedText = editor.document.getText(selection);
 
         if (!selectedText) {
-            vscode.window.showInformationMessage("No code selected!");
+            vscode.window.showInformationMessage("No code selected!"); // Show message
             return;
         }
 
-        const comment = await getCommentFromGemini(selectedText, "comment");
+        const comment = await getCommentFromGemini(selectedText, "comment"); // Get comment from Gemini
         if (!comment) {
-            vscode.window.showErrorMessage("Gemini couldn't generate comment after retry.");
+            vscode.window.showErrorMessage("Gemini comment failed."); // Show error message
             return;
         }
 
         editor.edit(editBuilder => {
-            editBuilder.replace(selection, comment);
+            editBuilder.replace(selection, comment); // Replace with comment
         });
     });
 
-    // Readability Suggestion (Ctrl + Win + G)
     const readableCommand = vscode.commands.registerCommand('CodeCharm.suggestReadableCode', async function () {
         const editor = vscode.window.activeTextEditor;
-        if (!editor) return;
+        if (!editor) return; // If no editor open
 
         const selection = editor.selection;
         const selectedText = editor.document.getText(selection);
 
         if (!selectedText) {
-            vscode.window.showInformationMessage("No code selected!");
+            vscode.window.showInformationMessage("No code selected!"); // No code selected error
             return;
         }
 
-        const readableCode = await getCommentFromGemini(selectedText, "readability");
+        const readableCode = await getCommentFromGemini(selectedText, "readability"); // Get readability code
         if (!readableCode) {
-            vscode.window.showErrorMessage("Gemini failed to suggest improvements.");
+            vscode.window.showErrorMessage("Gemini readability failed."); // Gemini readability failed
             return;
         }
 
         editor.edit(editBuilder => {
-            editBuilder.replace(selection, readableCode);
+            editBuilder.replace(selection, readableCode); // Replace selected code
         });
     });
 
-    context.subscriptions.push(commentCommand, readableCommand);
-    vscode.window.showInformationMessage("💫 CodeCharm v1.1 loaded with dual features!");
+    const setApiKeyCommand = vscode.commands.registerCommand('CodeCharm.setApiKey', async function () {
+        const userInput = await vscode.window.showInputBox({
+            prompt: "Enter your Gemini API Key",
+            ignoreFocusOut: true,
+            placeHolder: "Paste your key here...",
+            password: true
+        });
+
+        if (userInput) {
+            await vscode.workspace.getConfiguration().update("CodeCharm.zetaFlux", userInput, vscode.ConfigurationTarget.Global);
+            vscode.window.showInformationMessage("✅ API Key saved successfully!");
+        } else {
+            vscode.window.showErrorMessage("❌ API Key is required.");
+        }
+    });
+
+    context.subscriptions.push(commentCommand, readableCommand, setApiKeyCommand); // Add subscriptions to context
+
+    vscode.window.showInformationMessage("💫 CodeCharm loaded!"); // Show startup message
 }
 
 // 🧠 Get Gemini Comment or Refactor
 async function getCommentFromGemini(code, mode = "comment") {
-    let prompt = "";
+    let prompt = mode === "comment"
+        ? `You are a strict code-commenting assistant. Only add inline comments (4–5 words max) using emojis. Do NOT explain or return markdown. Return ONLY the modified code.\n\n${code}`
+        : `Refactor this code for readability. Rename unclear variables, break down complex parts. DO NOT return explanation. ONLY the cleaned code.\n\n${code}`;
 
-    if (mode === "comment") {
-        prompt = `You are a strict code-commenting assistant. Only add **inline comments** (4–5 words max) using emojis where necessary. DO NOT explain, DO NOT summarize, DO NOT use markdown or \`\`\`. DO NOT return the code inside triple backticks. Return only the modified code with inline comments where needed. Be brief, clear, and helpful. USE EMOJI IN COMMENTS FOR BETTER LOOK OF CODE.\n\n${code}`;
-    } else if (mode === "readability") {
-        prompt = `You are a clean code assistant. Refactor this code to improve readability. Rename unclear variables, break complex statements into simpler ones, and format it cleanly. DO NOT return explanations or markdown. ONLY return the improved code, no backticks.\n\n${code}`;
+    const apiKey = await getOrPromptAPIKey();
+    if (!apiKey) return null;
+
+    let models = [primaryModel, ...fallbackModels]; // All model choices
+
+    for (const model of models) {
+        try {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+            });
+
+            const data = await res.json(); // Parse the response
+            let text = data.candidates?.[0]?.content?.parts?.[0]?.text; // Get the text part
+            text = text?.replace(/```[\s\S]*?```/g, match => {
+                return match.replace(/```[a-zA-Z]*\n?/, '').replace(/```/, '');
+            }).trim();
+
+            if (text) return text;
+        } catch (e) {
+            console.warn(`⚠️ ${model} failed. Trying next...`); // Log model failure
+        }
     }
 
-    try {
-        const result = await callGemini(prompt);
-        return result || null;
-    } catch (err) {
-        console.error("❌ Gemini Error:", err);
-        return null;
-    }
+    return null; // Return if no text
 }
 
-// 📡 Gemini API Call with fallback
-async function callGemini(prompt) {
-    const api = vscode.workspace.getConfiguration().get("CodeCharm.zetaFlux");
-    if (!api) {
-        vscode.window.showErrorMessage("❌ Gemini API key (zetaFlux) missing in settings.");
-        return null;
-    }
+function deactivate() {} // Let him rest 😴
 
-    const primaryModel = "gemini-2.0-flash-lite";
-    const backupModel = "gemini-2.0-flash";
-
-    async function fetchFromModel(model) {
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${api}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
-
-        return await res.json();
-    }
-
-    let data = await fetchFromModel(primaryModel);
-    let text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!text || data?.error) {
-        console.warn("⚠️ Primary model failed. Switching to backup model...");
-        data = await fetchFromModel(backupModel);
-        text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-    }
-
-    text = text?.replace(/```[a-z]*\n?|```/gi, '').trim();
-    return text || null;
-}
-
-// ❌ Deactivate
-function deactivate() {}
-
-module.exports = {
-    activate,
-    deactivate
+module.exports = { // Export module 📦
+    activate, // Activate function 🚀
+    deactivate // Deactivate function 😴
 };
