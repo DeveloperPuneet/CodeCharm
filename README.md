@@ -4,6 +4,15 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
 
 > 🚀 Now updated with **multi-model fallback support** and **secure API key input**!
 
+<p align="center">
+  <img src="https://img.shields.io/visual-studio-marketplace/v/DeveloperPuneet.codecharm?color=brightgreen&label=VS%20Marketplace" alt="Version"/>
+  <img src="https://img.shields.io/visual-studio-marketplace/i/DeveloperPuneet.codecharm?color=blue" alt="Installs"/>
+  <img src="https://img.shields.io/visual-studio-marketplace/d/DeveloperPuneet.codecharm?color=blueviolet" alt="Downloads"/>
+  <img src="https://img.shields.io/visual-studio-marketplace/r/DeveloperPuneet.codecharm?color=yellow" alt="Rating"/>
+  <img src="https://img.shields.io/github/stars/DeveloperPuneet/CodeCharm?style=social" alt="Stars"/>
+  <img src="https://img.shields.io/github/license/DeveloperPuneet/CodeCharm" alt="License"/>
+</p>
+
 ---
 
 ## 🌟 Features
