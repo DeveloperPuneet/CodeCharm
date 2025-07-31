@@ -74,6 +74,11 @@ function getUser(id) {
 }
 ```
 
+### Demo video:
+<p align="center">
+  <img src="./CodeCharm_python_showcase.gif" alt="CodeCharm Demo" width="700"/>
+</p>
+
 ## 📦 Extension Info
 
 - 📁 **Extension ID**: `CodeCharm`
