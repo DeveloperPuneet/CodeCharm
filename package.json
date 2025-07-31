@@ -11,6 +11,18 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "ai",
+    "comments",
+    "documentation",
+    "gemini",
+    "google ai",
+    "code readability",
+    "inline comments",
+    "developer tools",
+    "productivity",
+    "vs code extension"
+  ],
   "activationEvents": [
     "onCommand:CodeCharm.commentFunction",
     "onCommand:CodeCharm.suggestReadableCode",
