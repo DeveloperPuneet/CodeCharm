@@ -28,7 +28,7 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
   3. `gemini-2.5-flash-lite`
   4. `gemini-2.5-pro`
 - 🔐 **Secure API Key Storage** in VS Code settings.
-- 🧠 Uses your **own API key**, no sharing required.
+- 🧠 Uses your **API key**, no sharing required.
 
 ---
 
