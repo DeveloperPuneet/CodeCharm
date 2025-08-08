@@ -634,6 +634,23 @@
             font-size: 0.9rem;
         }
 
+        .footer-links .product-hunt-badge {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .footer-links .product-hunt-badge img {
+            width: 180px;
+            height: auto;
+            border-radius: 6px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .footer-links .product-hunt-badge img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         /* Page Content */
         .page-content {
             display: none;
@@ -1626,12 +1643,29 @@
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="#" onclick="showPage('documentation')"><i class="fas fa-book"></i>
-                                Documentation</a></li>
-                        <li><a href="https://github.com/DeveloperPuneet/CodeCharm" target="_blank"><i
-                                    class="fab fa-github"></i> GitHub Repository</a></li>
-                        <li><a href="https://marketplace.visualstudio.com/items?itemName=DeveloperPuneet.CodeCharm"
-                                target="_blank"><i class="fab fa-microsoft"></i> VS Marketplace</a></li>
+                        <li>
+                            <a href="#" onclick="showPage('documentation')">
+                                <i class="fas fa-book"></i> Documentation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/DeveloperPuneet/CodeCharm" target="_blank">
+                                <i class="fab fa-github"></i> GitHub Repository
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://marketplace.visualstudio.com/items?itemName=DeveloperPuneet.CodeCharm"
+                                target="_blank">
+                                <i class="fab fa-microsoft"></i> VS Marketplace
+                            </a>
+                        </li>
+                        <li class="product-hunt-badge">
+                            <a href="https://www.producthunt.com/products/codecharm-ai-code-comments-for-vs-code?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-codecharm"
+                                target="_blank">
+                                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1002752&theme=neutral"
+                                    alt="CodeCharm - Generate emoji-rich code comments & refactor using AI | Product Hunt">
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-column">
