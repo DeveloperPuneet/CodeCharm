@@ -12,6 +12,9 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
   <img src="https://img.shields.io/github/stars/DeveloperPuneet/CodeCharm?style=social" alt="Stars"/>
   <img src="https://img.shields.io/github/license/DeveloperPuneet/CodeCharm" alt="License"/>
 </p>
+<p align="center">
+  🌐 <a href="https://codecharm.netlify.app/" target="_blank"><b>🔗 Visit CodeCharm Web</b></a>  
+</p>
 
 ---
 
