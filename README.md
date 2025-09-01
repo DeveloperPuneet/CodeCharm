@@ -32,6 +32,18 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
   4. `gemini-2.5-pro`
 - 🔐 **Secure API Key Storage** in VS Code settings.
 - 🧠 Uses your **API key**, no sharing required.
+- 🆕 **Execute `cmd()` instructions inside your code**  
+  - Add a line like: `cmd(import pandas)` at the top of your code block.  
+  - CodeCharm will first apply your instruction (e.g., add imports, modify setup)  
+    and then generate inline comments or refactor the code.
+    > **Tip:** You can add a `cmd()` instruction before running CodeCharm  
+> Example:
+> ```js
+> cmd(import pandas)
+> df = pd.DataFrame({...})
+> ```
+> This will automatically insert the required import before processing.
+
 
 ---
 
@@ -45,6 +57,14 @@ To use CodeCharm, you'll need your **own Google Gemini API key**:
 4. Press `Ctrl + Win + J` or `Ctrl + Win + G` for the first time.
 5. A secure input box will appear → paste your key there.
 6. It will be saved automatically in:  
+> **Tip:** You can add a `cmd()` instruction before running CodeCharm  
+> Example:
+> ```js
+> cmd(import pandas)
+> df = pd.DataFrame({...})
+> ```
+> This will automatically insert the required import before processing.
+
    **`CodeCharm.zetaFlux`** in your VS Code settings.
 
 > 🔐 Your key stays local & secure — not shared or stored remotely.
@@ -58,6 +78,14 @@ To use CodeCharm, you'll need your **own Google Gemini API key**:
    - `Ctrl + Win + J` → for inline comments
    - `Ctrl + Win + G` → to refactor code
 3. CodeCharm will generate and replace your selection with an improved version.
+> **Tip:** You can add a `cmd()` instruction before running CodeCharm  
+> Example:
+> ```js
+> cmd(import pandas)
+> df = pd.DataFrame({...})
+> ```
+> This will automatically insert the required import before processing.
+
 
 ---
 

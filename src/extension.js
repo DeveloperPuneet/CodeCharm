@@ -99,11 +99,16 @@ async function activate(context) {
     vscode.window.showInformationMessage("💫 CodeCharm loaded!"); // Show startup message
 }
 
+Additional_functionalies = `Before doing anything, check if the provided code contains a pattern like cmd(...).
+If found, treat the text inside cmd() as an instruction for modifying the code first.
+Example: cmd(import pandas library in this code)
+→ Then you have to Add "import pandas as pd" at the beginning of the code, then continue.`
+
 // 🧠 Get Gemini Comment or Refactor
 async function getCommentFromGemini(code, mode = "comment") {
     let prompt = mode === "comment"
-        ? `You are a strict code-commenting assistant. Only add inline comments (4–5 words max) using emojis. Do NOT explain or return markdown. Return ONLY the modified code.\n\n${code}`
-        : `Refactor this code for readability. Rename unclear variables, break down complex parts. DO NOT return explanation. ONLY the cleaned code.\n\n${code}`;
+        ? `You are a strict code-commenting assistant. Only add inline comments (4–5 words max) using emojis. Do NOT explain or return markdown. Return ONLY the modified code. ${Additional_functionalies} \n\n${code}`
+        : `Refactor this code for readability. Rename unclear variables, break down complex parts. DO NOT return explanation. ONLY the cleaned code. ${Additional_functionalies} \n\n${code}`;
 
     const apiKey = await getOrPromptAPIKey();
     if (!apiKey) return null;

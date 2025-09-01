@@ -1,4 +1,5 @@
 import random # Import random module 💯
+import pandas as pd # Use pandas, as requested 🧐
 numbers = [random.randint(1, 100) for _ in range(300)]
 even_numbers = [] # Initialize even list 👍
 odd_numbers = [] # Initialize odd list 🤔
@@ -9,5 +10,5 @@ for number in numbers: # Iterate numbers list 🤓
     else:
         odd_numbers.append(number) # Add to odd list 💯
 
-print(even_numbers) # Print even numbers 😎
-print(odd_numbers) # Print odd numbers 😮
+print(pd.Series(even_numbers)) # Print even series 😎
+print(pd.Series(odd_numbers)) # Print odd series 😮
