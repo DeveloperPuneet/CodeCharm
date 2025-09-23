@@ -99,10 +99,7 @@ async function activate(context) {
     vscode.window.showInformationMessage("💫 CodeCharm loaded!"); // Show startup message
 }
 
-Additional_functionalies = `Before doing anything, check if the provided code contains a pattern like cmd(...).
-If found, treat the text inside cmd() as an instruction for modifying the code first.
-Example: cmd(import pandas library in this code)
-→ Then you have to Add "import pandas as pd" at the beginning of the code, then continue.`
+Additional_functionalies = `Before doing anything, check if the provided code contains a pattern like cmd(...); if found, treat the text inside cmd() as an instruction to modify the code first (for example, cmd(import pandas library) means you should add "import pandas as pd" at the top). If no cmd() is found, do not print any messages or placeholders—simply continue processing the code silently.`
 
 // 🧠 Get Gemini Comment or Refactor
 async function getCommentFromGemini(code, mode = "comment") {
