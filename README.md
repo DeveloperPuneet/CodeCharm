@@ -30,6 +30,11 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
   2. `gemini-2.0-flash`
   3. `gemini-2.5-flash-lite`
   4. `gemini-2.5-pro`
+  5. `gemini-2.0-flash-exp`
+  6. `learnlm-2.0-flash-experimental`
+  7. `gemini-2.0-flash-live`
+  8. `gemini-2.5-flash-live`
+  9. `gemini-2.5-flash-native-audio-dialog`
 - 🔐 **Secure API Key Storage** in VS Code settings.
 - 🧠 Uses your **API key**, no sharing required.
 - 🆕 **Execute `cmd()` instructions inside your code**  
@@ -120,6 +125,7 @@ function getUser(id) {
   - `gemini-2.0-flash`
   - `gemini-2.5-flash-lite`
   - `gemini-2.5-pro`
+  - + other fallback models
 
 ## 🛟 Troubleshooting
 
@@ -138,6 +144,12 @@ function getUser(id) {
 - 💬 Ideas, feature requests, and PRs are all welcome!
 - Fork it, star it ⭐, break it, rebuild it — just don’t write spaghetti 🍝
 - All feedback = good feedback, especially with emojis.
+
+<p align="center">
+  <a href="https://buymeacoffee.com/developerpuneet" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="180" alt="Buy Me A Coffee" />
+  </a>
+</p>
 
 ## 📜 License
 

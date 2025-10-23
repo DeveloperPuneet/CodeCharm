@@ -5,7 +5,12 @@ const primaryModel = "gemini-2.0-flash-lite"; // Primary model choice 🧠
 const fallbackModels = [ // Fallback model options 🔄
     "gemini-2.0-flash",
     "gemini-2.5-flash-lite",
-    "gemini-2.5-pro"
+    "gemini-2.5-pro",
+    "gemini-2.0-flash-exp",
+    "learnlm-2.0-flash-experimental",
+    "gemini-2.0-flash-live",
+    "gemini-2.5-flash-live",
+    "gemini-2.5-flash-native-audio-dialog"
 ];
 
 // 🔐 Prompt user to enter API key
