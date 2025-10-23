@@ -6,9 +6,7 @@ Below is the list of CodeCharm versions currently receiving security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.1.x   | ✅ :white_check_mark: |
-| 1.0.x   | ❌ :x:                |
-| < 1.0   | ❌ :x:                |
+| 0.4.x   | ✅ :white_check_mark: |
 
 ---
 
