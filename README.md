@@ -25,6 +25,8 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
 - ⌨️ **Shortcut support**:
   - `Ctrl + Win + J` → Add Inline Comments
   - `Ctrl + Win + G` → Refactor Code
+  - `Ctrl + Win + H` → Comment + Refactor (adds inline emoji comments AND refactors the code)
+  - `Ctrl + Win + K` → Run only the instruction inside `cmd()` (no other changes)
 - 🔁 **Model Fallback Support**: Uses the following Gemini models in this order:
   1. `gemini-2.0-flash-lite`
   2. `gemini-2.0-flash`
@@ -40,7 +42,8 @@ CodeCharm is your intelligent VS Code extension that generates **inline code com
 - 🆕 **Execute `cmd()` instructions inside your code**  
   - Add a line like: `cmd(import pandas)` at the top of your code block.  
   - CodeCharm will first apply your instruction (e.g., add imports, modify setup)  
-    and then generate inline comments or refactor the code.
+    and then generate inline comments or refactor the code. You can also run the combined action with `Ctrl + Win + H` to perform both at once.
+    - Press `Ctrl + Win + K` to run only the `cmd()` instruction found in the selection (the extension sends only the `cmd()` instruction to the assistant and returns the modified code).
     > **Tip:** You can add a `cmd()` instruction before running CodeCharm  
 > Example:
 > ```js
@@ -60,6 +63,8 @@ To use CodeCharm, you'll need your **own Google Gemini API key**:
 2. Copy your API key.
 3. Open VS Code.
 4. Press `Ctrl + Win + J` or `Ctrl + Win + G` for the first time.
+  - Or press `Ctrl + Win + H` to run both commenting and refactoring in one step.
+  - Press `Ctrl + Win + K` to run only the instruction inside `cmd()` in your selection.
 5. A secure input box will appear → paste your key there.
 6. It will be saved automatically in:  
 > **Tip:** You can add a `cmd()` instruction before running CodeCharm  
@@ -82,6 +87,8 @@ To use CodeCharm, you'll need your **own Google Gemini API key**:
 2. Press:
    - `Ctrl + Win + J` → for inline comments
    - `Ctrl + Win + G` → to refactor code
+  - `Ctrl + Win + H` → to both refactor and add inline emoji comments (follows any `cmd()` instructions)
+  - `Ctrl + Win + K` → to only execute the `cmd()` instruction and return the modified code (no other changes)
 3. CodeCharm will generate and replace your selection with an improved version.
 > **Tip:** You can add a `cmd()` instruction before running CodeCharm  
 > Example:

@@ -2,7 +2,7 @@
   "name": "CodeCharm",
   "displayName": "CodeCharm",
   "description": "AI-powered code comment generator for VS Code using Gemini",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "publisher": "DeveloperPuneet",
   "icon": "images/Icon.png",
   "engines": {
@@ -24,11 +24,16 @@
     "inline comments",
     "developer tools",
     "productivity",
-    "vs code extension"
+    "vs code extension",
+    "tools",
+    "shortcuts",
+    "code generator"
   ],
   "activationEvents": [
     "onCommand:CodeCharm.commentFunction",
     "onCommand:CodeCharm.suggestReadableCode",
+    "onCommand:CodeCharm.commentAndRefactor",
+    "onCommand:CodeCharm.runCmdOnly",
     "onCommand:CodeCharm.setApiKey"
   ],
   "main": "./src/extension.js",
@@ -45,6 +50,15 @@
       {
         "command": "CodeCharm.setApiKey",
         "title": "🔑 CodeCharm: Set Gemini API Key"
+      },
+      {
+        "command": "CodeCharm.commentAndRefactor",
+        "title": "✨ CodeCharm: Comment & Refactor (Ctrl+Win+H)"
+      }
+      ,
+      {
+        "command": "CodeCharm.runCmdOnly",
+        "title": "⚡ CodeCharm: Run cmd() Instruction Only (Ctrl+Win+K)"
       }
     ],
     "keybindings": [
@@ -56,6 +70,18 @@
       {
         "command": "CodeCharm.suggestReadableCode",
         "key": "ctrl+win+g",
+        "when": "editorTextFocus"
+      }
+      ,
+      {
+        "command": "CodeCharm.commentAndRefactor",
+        "key": "ctrl+win+h",
+        "when": "editorTextFocus"
+      }
+      ,
+      {
+        "command": "CodeCharm.runCmdOnly",
+        "key": "ctrl+win+k",
         "when": "editorTextFocus"
       }
     ],
